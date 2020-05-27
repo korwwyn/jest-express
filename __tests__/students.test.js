@@ -2,8 +2,10 @@ process.env.NODE_ENV = "test";
 const db = require("../db");
 const request = require("supertest");
 const app = require("../app");
+let server;
 
 beforeAll(async () => {
+  server = await app.listen(3000, () => console.log("server starting on port 3000!"))
   await db.query("CREATE TABLE students (id SERIAL PRIMARY KEY, name TEXT)");
 });
 
@@ -19,6 +21,7 @@ afterEach(async () => {
 afterAll(async () => {
   await db.query("DROP TABLE students");
   db.end();
+  server.close();
 });
 
 describe("POST /students", () => {

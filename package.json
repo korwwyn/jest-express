@@ -1,15 +1,17 @@
 {
-  "name": "testing-with-express",
+  "name": "jest-express",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node server.js test",
+    "test": "./node_modules/.bin/jest "
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "jest": "^26.0.1",
     "supertest": "^4.0.2"
   },
   "dependencies": {
